@@ -32,18 +32,18 @@ class DashboardController extends Controller
             ]);
         }
 
-        $tenantId = $user->tenant_id;
-        $hotels = Tenant::where('tenant_id', $tenantId)->first();
-        $guestsCount = Guest::where('tenant_id', $tenantId)->count();
-        $roomsCount = Room::where('tenant_id', $tenantId)->count();
-        $bookingsCount = Booking::where('tenant_id', $tenantId)->count();
+        // $tenantId = $user->tenant_id;
+        // $hotel = Tenant::where('tenant_id', $tenantId)->first();
+        // $guestsCount = Guest::where('tenant_id', $tenantId)->count();
+        // $roomsCount = Room::where('tenant_id', $tenantId)->count();
+        // $bookingsCount = Booking::where('tenant_id', $tenantId)->count();
 
         return Inertia::render('dashboard', [
             'isAdmin' => false,
-            'hotels' =>   $hotels,
-            'guestsCount' =>  $guestsCount,
-            'roomsCount' => $roomsCount,
-            'bookingsCount' => $bookingsCount,
+            // 'hotel' =>   $hotel,
+            // 'guestsCount' =>  $guestsCount,
+            // 'roomsCount' => $roomsCount,
+            // 'bookingsCount' => $bookingsCount,
         ]);
     }
 }
