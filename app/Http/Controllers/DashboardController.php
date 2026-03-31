@@ -15,8 +15,9 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
+
         if ($user->role === 'ADMIN') {
-            $hotels = Tenant::latest()->get();
+            $hotels = Tenant::with('rooms')->latest()->get();
             $totalHotels = $hotels->count();
             $totalRooms = Room::count();
             $totalManagers = User::where('role', 'MANAGER')->count();
@@ -32,18 +33,18 @@ class DashboardController extends Controller
             ]);
         }
 
-        // $tenantId = $user->tenant_id;
-        // $hotel = Tenant::where('tenant_id', $tenantId)->first();
-        // $guestsCount = Guest::where('tenant_id', $tenantId)->count();
-        // $roomsCount = Room::where('tenant_id', $tenantId)->count();
-        // $bookingsCount = Booking::where('tenant_id', $tenantId)->count();
+        $tenantId = $user->tenant_id;
+        $hotel = Tenant::where('id', $tenantId)->first();
+        $guestsCount = Guest::where('tenant_id', $tenantId)->count();
+        $roomsCount = Room::where('tenant_id', $tenantId)->count();
+        $bookingsCount = Booking::where('tenant_id', $tenantId)->count();
 
         return Inertia::render('dashboard', [
             'isAdmin' => false,
-            // 'hotel' =>   $hotel,
-            // 'guestsCount' =>  $guestsCount,
-            // 'roomsCount' => $roomsCount,
-            // 'bookingsCount' => $bookingsCount,
+            'hotel' =>   $hotel,
+            'guestsCount' =>  $guestsCount,
+            'roomsCount' => $roomsCount,
+            'bookingsCount' => $bookingsCount,
         ]);
     }
 }

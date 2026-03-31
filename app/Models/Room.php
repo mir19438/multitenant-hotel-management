@@ -9,4 +9,9 @@ class Room extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
 }

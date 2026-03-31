@@ -9,4 +9,9 @@ class Tenant extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
 }
