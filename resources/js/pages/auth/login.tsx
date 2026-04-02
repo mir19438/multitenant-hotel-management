@@ -36,7 +36,7 @@ export default function Login({ status, canResetPassword }: LoginProps) {
     };
 
     return (
-        <AuthLayout title="Admin Dashobard Login" description="Enter admin email and password below to log in">
+        <AuthLayout title="Dashobard Login" description="Enter admin email and password below to log in">
             <Head title="Log in" />
 
             <form className="flex flex-col gap-6" onSubmit={submit}>

@@ -134,7 +134,7 @@ export default function Dashboard() {
                     </div>
                     {/* Hotel Details Modal */}
                     <Dialog open={open} onOpenChange={setOpen}>
-                        <DialogContent>
+                        <DialogContent className='sm:max-w-md data-[state=open]:animate-out'>
                             <DialogHeader>
                                 <DialogTitle>{selectedHotel?.hotel_name}</DialogTitle>
                                 <DialogDescription>

@@ -204,14 +204,14 @@ export default function Hotels() {
                                 <TableHead>Address</TableHead>
                                 <TableHead>Contact Number</TableHead>
                                 <TableHead>Created Date</TableHead>
-                                <TableHead>Actions</TableHead>
+                                <TableHead className="text-end">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
                             {hotels && hotels.length > 0 ? (
                                 hotels.map((hotel) => (
                                     <TableRow key={hotel.id}>
-                                        <TableCell>{hotel.id}</TableCell>
+                                        <TableCell>{`#${hotel.id}`}</TableCell>
                                         <TableCell>
                                             {hotel.image ? (
                                                 <img src={hotel.image} alt={hotel.hotel_name} className="h-12 w-12 rounded-lg border object-cover" />
@@ -230,7 +230,7 @@ export default function Hotels() {
                                                 : 'N/A'}
                                         </TableCell>
                                         <TableCell>
-                                            <div className="flex items-center gap-4">
+                                            <div className="flex items-center justify-end gap-2">
                                                 <Button size="sm" variant="outline" onClick={() => handleViewDetails(hotel)}>
                                                     <Eye size={18} />
                                                 </Button>
@@ -302,7 +302,7 @@ export default function Hotels() {
                                     <input
                                         id="image"
                                         type="file"
-                                        className="mt-2 block w-full border p-2 cursor-pointer"
+                                        className="mt-2 block w-full cursor-pointer border p-2"
                                         onChange={(e) => {
                                             const target = e.target as HTMLInputElement;
                                             if (target.files && target.files.length > 0) {
@@ -338,9 +338,12 @@ export default function Hotels() {
 
                         {selectedHotel && (
                             <div className="grid gap-4 py-4">
-
-                                <div>
-                                    <img src={selectedHotel.image} alt={selectedHotel.hotel_name} className="w-full rounded-lg border object-cover" />
+                                <div className="flex flex-col gap-1 pb-4">
+                                    <img
+                                        src={selectedHotel.image}
+                                        alt={selectedHotel.hotel_name}
+                                        className="h-[200px] w-full rounded-lg border object-cover"
+                                    />
                                 </div>
 
                                 <div className="flex flex-col gap-1">
