@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('hotel_name');
             $table->text('address');
             $table->string('contact_number');
+            $table->string('image')->nullable(); // not migrate
             $table->timestamps();
         });
     }

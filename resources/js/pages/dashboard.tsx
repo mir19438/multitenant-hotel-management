@@ -3,8 +3,10 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
 import { Head, usePage } from '@inertiajs/react';
-import { Bed, Building2, CalendarCheck, CalendarCheck2, UserCog, Users } from 'lucide-react';
+import { Bed, Building2, CalendarCheck2, UserCog, Users } from 'lucide-react';
 import { useState } from 'react';
+
+import { PageProps } from '@inertiajs/core'; // এটি ইমপোর্ট করুন
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -30,9 +32,31 @@ interface Hotel {
     rooms: Room[];
 }
 
+interface DashboardProps {
+    isAdmin: boolean;
+    hotels?: Hotel[]; // এডমিনের জন্য
+    hotel?: Hotel; // ম্যানেজারের জন্য
+    guestsCount: number;
+    roomsCount: number;
+    bookingsCount: number;
+    totalHotels: number;
+    totalRooms: number;
+    TotalManagers: number;
+    totalGuests: number;
+    auth: {
+        user: {
+            id: number;
+            role: string;
+            tenant_id?: number;
+            // অন্য ফিল্ডগুলো এখানে দিন
+        };
+    };
+}
+
 export default function Dashboard() {
-    const { isAdmin, hotels, hotel, guestsCount, roomsCount, bookingsCount, totalHotels, totalRooms, TotalManagers, totalGuests, auth } = usePage()
-        .props as unknown as any;
+    const { isAdmin, hotels, hotel, guestsCount, roomsCount, bookingsCount, totalHotels, totalRooms, TotalManagers, totalGuests, auth } = usePage<
+        PageProps & DashboardProps
+    >().props;
 
     const user = auth?.user;
 
