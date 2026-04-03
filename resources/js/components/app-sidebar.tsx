@@ -33,12 +33,12 @@ const mainNavItems: NavItem[] = [
 const adminNavItems: NavItem[] = [
     {
         title: 'Dashboard',
-        url: '/dashboard',
+        url: route('dashboard'),
         icon: LayoutGrid,
     },
     {
         title: 'Assign Manager',
-        url: '/assign-manager',
+        url: '/managers',
         icon: Users,
     },
     {
