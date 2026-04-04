@@ -20,6 +20,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/hotels', HotelController::class)->only(['index', 'store', 'update','destroy']);
 
     Route::get('/managers',[AssignManagerController::class,'index'])->name('managers');
+    Route::post('/managers',[AssignManagerController::class,'store'])->name('managers.store');
+    Route::patch('/managers/{id?}',[AssignManagerController::class,'update'])->name('managers.update');
+    Route::delete('/managers/{id?}',[AssignManagerController::class,'destroy'])->name('managers.destroy');
     Route::patch('/manager-assign/{id?}',[AssignManagerController::class,'assign'])->name('managers.assign');
     Route::patch('/manager-unassign/{id?}',[AssignManagerController::class,'unassign'])->name('managers.unassign');
     Route::patch('/toggle-active-inactive/{id?}',[AssignManagerController::class,'toggleActiveInactive'])->name('managers.toggleActiveInactive');

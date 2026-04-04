@@ -190,7 +190,7 @@ export default function Hotels() {
                     <div className="text-2xl font-bold">Hotels Management</div>
                     <Button className="gap-2" onClick={handleOpen}>
                         <Plus size={18} />
-                        Store Hotel
+                        Add Hotel
                     </Button>
                 </div>
                 {/* table */}
@@ -260,7 +260,7 @@ export default function Hotels() {
                     <DialogContent className="data-[state=open]:animate-out sm:max-w-sm">
                         <form onSubmit={handleSubmit}>
                             <DialogHeader>
-                                <DialogTitle>{isEdit ? 'Update Hotel' : 'Store Hotel'}</DialogTitle>
+                                <DialogTitle>{isEdit ? 'Update Hotel' : 'Add Hotel'}</DialogTitle>
                                 <DialogDescription>Make changes to your hotel details here.</DialogDescription>
                             </DialogHeader>
 
@@ -322,7 +322,7 @@ export default function Hotels() {
                                     </Button>
                                 </DialogClose>
                                 <Button type="submit" disabled={processing}>
-                                    {processing ? 'Processing...' : isEdit ? 'Update' : 'Store'}
+                                    {processing ? 'Processing...' : isEdit ? 'Update' : 'Add Hotel'}
                                 </Button>
                             </DialogFooter>
                         </form>
